@@ -49,14 +49,14 @@
 
 
 
-### HTML
+### HTML : HYPER TEXT MARKUP LANGUAGE
 
 - 웹페이지 작성시 사용하는 언어
-
+- Markup : 태그로 구분됨
 - **<태그이름 속성명="속성값" 속성명2="속성값2">내용</태그이름>** 가 기본 형태
 - 태그 안에 태그를 넣을 수 있다.
 
-```python
+```html
 <!DOCTYPE html>
 <html>
     <head>
