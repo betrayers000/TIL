@@ -105,6 +105,8 @@
 
 - HTML에서 input을 이용해서 사용자가 입력한 값을 보내줄 수있다.
 
+- `<form action = "/pong">` 을 통해서 입력받은 값을 pong.html 으로 보낸다
+
     ```html
     <!DOCTYPE html>
     <html lang="en">
