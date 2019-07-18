@@ -29,3 +29,33 @@ for test_case in range(1, T + 1):
 ```
 
 - `list.count(num) ` : 리스트 내용중 num 내용의 갯수를 반환한다.
+
+### 버스 정류장 문제
+
+```python
+
+T = int(input())
+# 여러개의 테스트 케이스가 주어지므로, 각각을 처리합니다.
+for test_case in range(1, T + 1):
+    # ///////////////////////////////////////////////////////////////////////////////////
+    k, n, m =[int(n) for n in input().strip().split(" ")]
+    charges = [int(t) for t in input().strip().split(" ")]
+    i = 0
+    result = []
+    for station in range(n):
+        mv = [m for m in range(i+ 1, i+k+1) if m <= n]
+        if n in mv :
+            break
+        cv = [c for c in charges if c in mv]
+        if len(cv) > 0:
+            i = cv[-1]
+            result.append(i)
+        else : 
+            break
+    if result[-1] < n-k:
+        print(f"#{test_case} 0")
+    else:
+        print(f"#{test_case} {len(result)}")
+```
+
+- 처음에 0에서 버스 이동칸을 구한다음에 정류장이 그 안에 있냐 없냐로 판단, 정류장이 있으면 가장 큰수의 정류장을 스타트 지점으로 다시 버스이동칸을 구한다. 이를 반복한다.
