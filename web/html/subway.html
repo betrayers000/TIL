@@ -11,12 +11,14 @@
    <p>주문서를 작성해주세요.</p>
 
    <form action="">
-       <label for="name">이름: </label>
-       <input id="name" type="text" name="name" placeholder="이름을 입력해주세요">
-       <br>
-       <label for="date">날짜: </label>
-       <input id="date" type="date" value="2019-07-29" name="when">
-
+       <div>
+            <label for="name">이름: </label>
+            <input id="name" type="text" name="name" placeholder="이름을 입력해주세요">
+        </div>
+        <div>
+            <label for="date">날짜: </label>
+            <input id="date" type="date" value="2019-07-29" name="when">
+       </div>
        <h3>1. 샌드위치 선택</h3>
        <input type="radio" name="main" value="1"><label for="">에그마요</label> 
        <input type="radio" name="main" value="2"><label for="">비엘티</label>
@@ -35,15 +37,15 @@
        <hr>
 
        <h3>4. 야채/소스</h3>
-       <input type="checkbox" name="etc" value="tomato">
+       <input type="checkbox" name="tomato" value="True">
        <label for="">토마토</label><br>
-       <input type="checkbox" name="etc" value="cucumber">
+       <input type="checkbox" name="cucumber" value="True">
        <label for="">오이</label><br>
-       <input type="checkbox" name="etc" value="halapinyo">
+       <input type="checkbox" name="halapinyo" value="True">
        <label for="">할라피뇨</label><br>
-       <input type="checkbox" name="etc" value="hotchily">
+       <input type="checkbox" name="hotchily" value="True">
        <label for="">핫 칠리</label><br>
-       <input type="checkbox" name="etc" value="bbq">
+       <input type="checkbox" name="bbq" value="True">
        <label for="">바베큐</label>
        <br>
        <input type="submit">

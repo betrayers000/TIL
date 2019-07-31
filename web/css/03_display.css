@@ -1,0 +1,34 @@
+div {
+    background-color: salmon;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.half {
+    width: 50%;
+    
+}
+
+.b {
+    display: block;
+}
+
+.i {
+    display: inline;
+    margin-top: 10px;
+}
+
+.bi {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.bg {
+    background-image: url(https://post-phinf.pstatic.net/MjAxOTAxMTVfOCAg/MDAxNTQ3NTE2Mjk0Mzcz.cTVEH4vTbRoGhBD4DrhiVr0B0OAf7GaMhY35KHc7SVUg.fRRqbI8Rd8fz2Nhwwtw4AaIkIifJIhboMZo8hXFteZ0g.GIF/I3bVXtoPsC7ZOfKHc5HKugypnwq4.jpg?type=w400);
+}
+
+.text {
+    font-family: 'Indie Flower', cursive;
+    font-size: 8em; 
+    text-align: right
+}

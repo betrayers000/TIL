@@ -1,0 +1,43 @@
+div {
+    height: 100px;
+    width: 100px;
+}
+
+.blue {
+    background-color: cornflowerblue;
+    position: static;
+}
+.red {
+    background-color: crimson; 
+    position: relative;
+    left: 50px;
+    bottom: 50px;
+}
+
+.green {
+    position: absolute;
+    background-color: greenyellow;
+    right: 0px;
+    bottom: 0px;
+}
+
+.parent {
+    height: 200px;
+    width: 100%;
+    background-color: khaki;
+    position: relative
+}
+
+.children {
+    background-color: darkolivegreen;
+    position: absolute;
+    left: 100px;
+    bottom: 100px;
+}
+
+.yellow {
+    background-color: yellow;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+}

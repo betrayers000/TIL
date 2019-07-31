@@ -1,0 +1,47 @@
+/* *(별)은 모두의 의미를 가진다*/
+/* * {
+   color: bisque; 
+} */
+
+/* TAG SELECTOR */
+h1 {
+    color: crimson !important;
+}
+
+/* Group */
+h1, h2 {
+    background-color: rgba(26, 26, 26, 0.815);
+}
+
+/* Class .(점)을 이용해서 접근한다. */
+.class-selector {
+    color: aliceblue;
+}
+
+/* Id #을 이용해서 접근한다. */
+#id-selector {
+    color: yellow;
+}
+
+
+/* 
+selector의 우선순위 
+id > class > tag 
+!important가 붙어있는경우에는 최우선으로 적용된다.
+*/
+
+/* 자식 셀렉터 ul태그의 li에 적용해라 */
+ul > li {
+    color: burlywood;
+}
+
+/* 형제 셀렉터 + 는 바로뒤의 형제, ~는 모든 형제 */
+p + li {
+    color: blue;
+}
+p ~ li {
+    color: rebeccapurple;
+}
+li {
+    color: palevioletred;
+}

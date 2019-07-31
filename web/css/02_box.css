@@ -1,0 +1,43 @@
+div {
+    width: 100px;
+    height: 100px;
+    background-color: slategray
+
+}
+
+.margin {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.padding {
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.border {
+    border-width: 2px;
+    border-color: coral;
+    border-style: dotted;
+}
+/*모든방향*/
+.margin-1 {
+    margin: 10px;
+}
+/*상하 좌우*/
+.margin-2 {
+
+    margin: 10px 20px;
+}
+/*상 좌우 하*/
+.margin-3 {
+
+    margin: 10px 20px 30px;
+}
+/*상우좌하*/
+.margin-4 {
+
+    margin: 10px 20px 30px 40px;
+}

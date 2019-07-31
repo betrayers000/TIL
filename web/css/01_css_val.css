@@ -1,0 +1,29 @@
+#hello {
+    font-size: 50px;
+}
+
+#welcome {
+    font-size: 200%;
+}
+
+#lunch {
+    font-size: 2em;
+}
+
+#snack {
+    font-size: 2rem;
+}
+
+div {
+    width: 50%;
+}
+
+h1 {
+    width: 50%;
+}
+
+#menu {
+    background-color: wheat;
+    width: 50vw;
+    height: 50vh;
+}

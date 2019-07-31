@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header">당신의 티어는</div>
+  <div class="card-body">
+    <h5 class="card-title">{{summoner}}님의 티어등급</h5>
+    <p class="card-text">{{user_tier}}입니다</p>
+  </div>
+</div> 
+{% endblock %}
