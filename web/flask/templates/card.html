@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h1>여기는 일제목록카드입니다.</h1>
+  <div class="row mt-5">
+    {% for product in products%}
+    <div class="col-sm-4">
+      <div class="card text-center">
+        <div class="card-header font-weight-bold">
+          {{product[0]}} 
+        </div>
+        <div class="card-body">
+          <p class="card-title">{{product[1]}}</p>
+        </div>
+        <div class="card-footer text-muted">
+          <a href="#" class="btn btn-outline-primary">{{product[2]}}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}
