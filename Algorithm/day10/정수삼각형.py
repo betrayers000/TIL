@@ -8,10 +8,10 @@ def tri_sum(n, k, used, temp):
         return
     else:
         for i in range(k):
-            if i <= n:
+            if i <= k:
                 if used[i] == 0:
                     used[i] = 1
-                    temp[n] = tri[n][i]
+                    temp[i] = tri[n][i]
                     tri_sum(n+1, k, used, temp)
                     used[n] = 0
                     temp[n] = 0

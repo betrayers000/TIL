@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95fb5f50-6410-43be-9b13-ed33c0f41437" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/input.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/정수삼각형.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../projects/study3/input.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../projects/study3/보급로.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/day10.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/day10.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01타일.py" beforeDir="false" afterPath="$PROJECT_DIR$/01타일.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/정수삼각형.py" beforeDir="false" afterPath="$PROJECT_DIR$/정수삼각형.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
