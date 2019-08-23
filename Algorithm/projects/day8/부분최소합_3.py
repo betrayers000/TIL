@@ -2,36 +2,36 @@ import sys
 
 sys.stdin = open('input.txt', 'r')
 
-def perm(per):
-    global board
-    length = len(per)
-    if length == 1:
-        return [per]
-    else:
-        result = []
-        for i in per:
-            b = per.copy()
-            b.remove(i)
-            b.sort()
-            for j in perm(b):
-                j.insert(0, i)
-                if j not in result:
-                    result.append(j)
-        return result
+
+def get_sum(x, history, total):
+    global N
+    global result
+    global ans
+
+    if x == N - 1:
+        if ans > total:
+            ans = total
+        return 1
+    for i in range(N):
+        if i not in history:
+            temp = board[x + 1][i]
+            if total + temp < ans:
+                history.append(i)
+                total += board[x + 1][i]
+                if get_sum(x + 1, history, total) == 1:
+                    history.pop()
+                    return
+                else:
+                    total -= board[x + 1][history.pop()]
 
 T = int(input())
-for t in range(1, T+1):
+for t in range(1, T + 1):
     N = int(input())
     board = [list(map(int, input().split())) for n in range(N)]
-    board_list = list(range(1, N+1))
-    ans = perm(board_list)
-    total = 0
-    min_total = 100
-    for val in ans:
-        total = 0
-        for i in range(N):
-            total += board[i][val[i]-1]
-        if min_total > total:
-            min_total = total
+    ans = 99
+    for i in range(N):
+        history = []
+        history.append(i)
+        total = board[0][i]
+        get_sum(0, history, total)
     print(ans)
-    print(f"#{t} {min_total}")
