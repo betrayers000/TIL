@@ -3,17 +3,7 @@ import sys
 sys.stdin = open('input_a.txt', 'r')
 
 
-def suffle(left, right, x, N):
-    result = []
-    cross = False
-    if x < div:
-        start = div-x
-        for i in range(N):
-            if cross:
-                result.append(left.pop())
-                result.append(right.pop())
-            else:
-                result.append(left.pop())
+def suffle(left, right, x, div):
 
 
 
