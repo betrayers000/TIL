@@ -22,7 +22,6 @@ def get_dist(shark, fish, size):
 def check_dist(shark, dist):
     x, y = shark
     result = []
-    print(dist)
     dist = sorted(dist, key=lambda x: x[3])
     if len(dist) == 1:
         result.extend(dist[0])
@@ -33,8 +32,10 @@ def check_dist(shark, dist):
             if bd != dist[i][3]:
                 div = i
                 break
+            div = i
         dist = dist[:div]
-        print(dist)
+        dist = sorted(dist, key=lambda x: (x[0], x[1]))
+        result.extend(dist[0])
     return result
 
 
@@ -55,7 +56,6 @@ if fish == []:
 else:
     cnt = 0
     size_cnt = 0
-    print(fish)
     while 1:
         if fish == []:
             break
@@ -63,7 +63,7 @@ else:
         if dist == []:
             break
         check = check_dist(shark, dist)
-        print(shark, check, fish, size)
+        # print(shark, check, fish, size, cnt)
         shark = [check[0], check[1]]
         fish.pop(check[2])
         size_cnt += 1
@@ -71,4 +71,5 @@ else:
         if size_cnt == size:
             size += 1
             size_cnt = 0
+    # print(fish)
     print(cnt)
