@@ -18,7 +18,7 @@ int check(int arr1[], int arr2[], int s, int l) {
 
 int main() {
 	int T;
-	scanf("%d", &T);
+	scanf("%d", &T);	
 	for (int tc = 1; tc <= T; tc++) {
 		int N, M;
 		scanf("%d", &N);
