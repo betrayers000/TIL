@@ -8,7 +8,7 @@ def f(point, s):
     dx = [0, 1]
     dy = [1, 0]
     x, y = point
-    if x == N-1 and y == N-1:
+    if x == N - 1 and y == N - 1:
         if s < minV:
             minV = s
         return
@@ -28,5 +28,5 @@ for t in range(1, T + 1):
     minV = sum(board[0])
     for i in range(N):
         minV += board[i][N - 1]
-    f([0,0],board[0][0])
+    f([0, 0], board[0][0])
     print(minV)
