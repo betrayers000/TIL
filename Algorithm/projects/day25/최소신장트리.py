@@ -22,11 +22,21 @@ for t in range(1, T + 1):
         table[j][i] = w
     # 크루스칼을 위해서 가중치가 적은 순서대로 정렬
     path = sorted(path, key=lambda x: x[2])
-    print(path)
     # 사이클 회피
     cycle = list(range(V + 1))
-    check = [0] * (V+1)
+    rank = [0] * (V+1)
     total = 0
     for p in path:
         i, j, w = p
-    print(cycle, total)
+        r1 = f(i)
+        r2 = f(j)
+        if r1 != r2:
+            if rank[r1] > rank[r2]:
+                total += w
+                cycle[r2] = r1
+            else:
+                cycle[r1] = r2
+                total += w
+                if rank[r1] == rank[r2]:
+                    rank[r2] += 1
+    print("#{} {}".format(t, total))
