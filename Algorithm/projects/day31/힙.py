@@ -2,10 +2,7 @@ import sys
 
 sys.stdin = open('heap.txt', 'r')
 
-
 def get_last():
-    if q == []:
-        return 0
     return len(q)
 
 
@@ -23,33 +20,38 @@ def enque(val):
         par = n // 2
 
 
-def del_sort(n):
-    idx = get_last()
-    while n < idx:
-        ch1 = n * 2
-        ch2 = n * 2 + 1
-        if q[ch2-1] == []:
-            q[n], q[ch1-1] = q[ch1-1], q[n]
-            n = ch1
-        else:
-            if q[n-1] < q[max(ch1 - 1, ch2 - 1)]:
-                q[n-1], q[max(ch1 - 1, ch2 - 1)] = q[max(ch1 - 1, ch2 - 1)], q[n-1]
-                n = max(ch1, ch2)
-
 def deque():
     global q
     if q == []:
         return -1
     res = q[0]
     q[0], q[-1] = q[-1], q[0]
-    q = q[:-1]
-    del_sort(1)
+    q.pop()
+    n = 1
+    idx = get_last()
+    while n*2+1 <= idx:
+        c1, c2 = n*2, n*2+1
+        if c2 > idx:
+            q[n-1], q[c1-1] = q[c1-1], q[n-1]
+            n = c1
+        else:
+            if q[c1-1] > q[c2-1]:
+                if q[n-1] < q[c1-1]:
+                    q[n-1], q[c1-1] = q[c1-1], q[n-1]
+                    n = c1
+                else:
+                    return res
+            else:
+                if q[n-1] < q[c2-1]:
+                    q[n-1], q[c2 - 1] = q[c2 - 1], q[n-1]
+                    n = c2
+                else:
+                    return res
     return res
 
 
-
 T = int(input())
-for t in range(1, T + 1):
+for t in range(1, T+1):
     q = []
     N = int(input())
     res = []
