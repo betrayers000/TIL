@@ -24,6 +24,18 @@ def p_sort():
                 q[rear] = a
                 rank[a] = rank[n] + 1
 
+def check(n):
+    s = []
+    s.append(n)
+    history = []
+    while s:
+        ns = s.pop()
+        history.append(ns)
+        for i in range(len(table[n])):
+            a = table[n][i]
+            if a not in history:
+                s.append(a)
+    print(history)
 
 T = int(input())
 for t in range(1, T + 1):
@@ -44,3 +56,5 @@ for t in range(1, T + 1):
     print(table)
     print(rank)
     print(res)
+    for i in range(N):
+        check(res[i])
