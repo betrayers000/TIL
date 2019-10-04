@@ -8,7 +8,6 @@ def f(n, k, m):
     if maxV == 0:
         return
     if n == m:
-        # print(p)
         board = make_temp_board()
         for i in p:
             drop(i, board)
@@ -16,7 +15,6 @@ def f(n, k, m):
         res = count_board(board)
         if maxV > res:
             maxV = res
-        del board
         return
     else:
         for i in range(k):
@@ -38,7 +36,6 @@ def drop(n, board):
     global H, W
     for i in range(H):
         if board[i][n] > 0:
-            # print(board[i][n])
             return check_block(i, n, board[i][n], board)
 
 
@@ -46,38 +43,63 @@ def check_block(i, j, n, board):
     global W, H
     # 왼쪽 0, -1
     # print(n)
-    # temp = j - 1
+    temp = j - 1
     board[i][j] = 0
-    for x in range(j-1, j - n, -1):
-        if 0 <= x < W:
-            if board[i][x] == 1:
-                board[i][x] = 0
-            elif board[i][x] > 1:
-                check_block(i, x, board[i][x], board)
-                # break
-    for x in range(j+1, j + n):
-        if 0 <= x < W:
-            if board[i][x] == 1:
-                board[i][x] = 0
-            elif board[i][x] > 1:
-                check_block(i, x, board[i][x], board)
-                # break
-    for x in range(i+1, i + n):
-        if 0 <= x < H:
-            if board[x][j] == 1:
-                board[x][j] = 0
-            elif board[x][j] > 1:
-                check_block(x, j, board[x][j], board)
-                # break
+    while temp >= j - n + 1:
+        if 0 <= temp < W:
+            if board[i][temp] == 1:
+                board[i][temp] = 0
+            elif board[i][temp] > 1:
+                # te = board[i][temp]
+                # board[i][temp] = 0
+                check_block(i, temp, board[i][temp], board)
+                break
+            temp -= 1
+        else:
+            break
+    temp = j + 1
+    # 오른쪽 0, 1
+    while temp <= j + n - 1:
+        if 0 <= temp < W:
+            if board[i][temp] == 1:
+                board[i][temp] = 0
+            elif board[i][temp] > 1:
+                # te = board[i][temp]
+                # board[i][temp] = 0
+                check_block(i, temp, board[i][temp], board)
+                break
+            temp += 1
+        else:
+            break
+    temp = i + 1
     # 아래 +1, 0
-    for x in range(i-1, i - n, -1):
-        if 0 <= x < H:
-            if board[x][j] == 1:
-                board[x][j] = 0
-            elif board[x][j] > 1:
-                check_block(x, j, board[x][j], board)
-                # break
-    return 0
+    while temp <= i + n - 1:
+        if 0 <= temp < H:
+            if board[temp][j] == 1:
+                board[temp][j] = 0
+            elif board[temp][j] > 1:
+                # te = board[temp][j]
+                # board[temp][j] = 0
+                check_block(temp, j, board[temp][j], board)
+                break
+            temp += 1
+        else:
+            break
+    temp = i - 1
+    # 위 -1, 0
+    while temp >= i - n + 1:
+        if 0 <= temp < H:
+            if board[temp][j] == 1:
+                board[temp][j] = 0
+            elif board[temp][j] > 1:
+                # te = board[temp][j]
+                # board[temp][j] = 0
+                check_block(temp, j, board[temp][j], board)
+                break
+            temp -= 1
+        else:
+            break
+
 
 def make_temp_board():
     temp = []
@@ -104,7 +126,7 @@ def down_block(board):
 
 
 T = int(input())
-for t in range(1, 2):
+for t in range(1, T+1):
     N, W, H = map(int, input().split())
     ori_board = [list(map(int, input().split())) for _ in range(H)]
     start_point = list(range(W))
