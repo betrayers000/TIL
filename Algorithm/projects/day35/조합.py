@@ -32,24 +32,36 @@ def f(n, u):
         #     return (f(n, (u // 2) + 1) * f(n, u // 2))%1234567891
         # else:
         #     return (f(n, u // 2) * f(n, u // 2))%1234567891
+# def f(x, y):
+#     xy = 1
+#     while y > 0:
+#         if (y % 2) == 1:
+#             xy *= x
+#             y -= 1
+#             xy %= 1234567891
+#         x *= x
+#         x %= 1234567891
+#         y /= 2
+#     return xy
 
-def facto(n):
-    if n == 1:
-        return 1
-    else:
-        return facto(n-1) * n
+# def facto(n):
+#     if n == 1:
+#         return 1
+#     else:
+#         return facto(n-1) * n
 
 T = int(input())
 for t in range(1, T + 1):
     N, R = map(int, input().split())
     N_ = 1
-    for i in range(N, N - R, -1):
+    for i in range(N-R+1, N+1):
         N_ = N_ * i
-    N_ = N_%1234567891
+        N_ %= 1234567891
     R_ = 1
-    for j in range(R, 0, -1):
+    for j in range(1, R+1):
         R_ = R_ * j
+        R_ %= 1234567891
     res = f(R_, 1234567891-2)
     # print(res, N_)
-    print(facto(4))
-    print(f"#{t} {N_*res}")
+    # print(facto(4))
+    print(f"#{t} {(N_*res)%1234567891}")
