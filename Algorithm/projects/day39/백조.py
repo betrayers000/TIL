@@ -6,52 +6,59 @@ dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
 
 
-def mel(temp):
-    for i in temp:
-        x, y = i
-        lake[x][y] = "."
+# def enque(i, j, n):
+#     if n == 1:
+#         q.append([i, j])
+#     else:
+#         q2.append([i, j])
+#
+#
+# def deque(n):
+#     global minV, minV2
+#     # print(q, minV, n, len(q))
+#     if n == 1:
+#         for i in range(len(q)):
+#             x, y = q[i]
+#             if visited[x][y] == minV and q[i] != [-1, -1]:
+#                 q[i] = [-1, -1]
+#                 return x, y, n
+#         minV += 1
+#         return deque(n)
+#     else:
+#         for i in range(len(q2)):
+#             x, y = q2[i]
+#             if visited[x][y] == minV2 and q2[i] != [-1, -1]:
+#                 q2[i] = [-1, -1]
+#                 return x, y, 2
+#         minV2 += 1
+#         return deque(2)
 
-def bfs(point):
+
+
+def water(ice):
     global R, C
-    sx, sy = point[0]
-    ex, ey = point[1]
-    q = []
-    # q.append([sx, sy])
-    q.extend(point)
-    lake[sx][sy] = "L"
-    lake[ex][ey] = "R"
-    temp = set()
-    cnt = 0
-    x1, y1 = 0, 0
-    while 1:
-        print(lake)
-        while q:
-            x1, y1 = q.pop(0)
-            for i in range(4):
-                nx, ny = x1 + dx[i], y1 + dy[i]
-                if 0 <= nx < R and 0 <= ny < C:
-                    if lake[nx][ny] == "R" and lake[x1][y1] == "L":
-                        return cnt
-                    elif lake[nx][ny] == "L" and lake[x1][y1] == "R":
-                        return cnt
-                    if lake[nx][ny] == ".":
-                        q.append([nx, ny])
-                        lake[nx][ny] = lake[x1][y1]
-                    elif lake[nx][ny] == "X":
-                        temp.add((nx, ny))
-        mel(temp)
-        temp = set()
-        q.append([x1, y1])
-        cnt += 1
+    while ice:
+        # front += 1
+        x, y = ice.pop(0)
+        for i in range(4):
+            nx, ny = x + dx[i], y + dy[i]
+            if 0 <= nx < R and 0 <= ny < C and visited[nx][ny] == 0 and lake[nx][ny] == "X":
+                visited[nx][ny] = visited[x][y] + 1
+                ice.append([nx, ny])
 
 
 R, C = map(int, input().split())
 lake = []
 point = []
+ice = []
+visited = [[0] * C for _ in range(R)]
 for i in range(R):
     temp = list(input())
     lake.append(temp)
     for j in range(C):
         if lake[i][j] == 'L':
             point.append([i, j])
-print(bfs(point))
+        if lake[i][j] == "." or lake[i][j] == "L":
+            ice.append([i, j])
+water(ice)
+# 이분탐색으로 bfs 돌려야함 ?
