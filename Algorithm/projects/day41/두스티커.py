@@ -3,18 +3,38 @@ import sys
 sys.stdin = open('sticky.txt', 'r')
 
 
-def get_area():
+def get_area(temp):
     global H, W
-    h1, w1 = info[p[0]]
-    h2, w2 = info[p[1]]
+    for i in range(4):
+        h1, w1 = info[temp[0]]
+        h2, w2 = info[temp[1]]
+        if i == 1:
+            h1, w1 = w1, h1
+        elif i == 2:
+            h2, w2 = w2, h2
+        elif i == 3:
+            h1, w1 = w1, h1
+            h2, w2 = w2, h2
+        th1, tw1 = w1 + w2, max(h1, h2)
+        th2, tw2 = max(w1, w2), h1 + h2
+        if (th1 <= H and tw1 <= W) or (th2 <= H and tw2 <= W):
+            return True
+    return False
 
 
+def get_sum(temp):
+    ax, ay = info[temp[0]]
+    bx, by = info[temp[1]]
+    return (ax * ay) + (bx * by)
 
 
 def f(n, k, m, z):
     global H, W, maxV
     if n == m:
-        print(p)
+        if get_area(p):
+            res = get_sum(p)
+            if maxV < res:
+                maxV = res
         return
     else:
         for i in range(z, k):
