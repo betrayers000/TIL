@@ -17,6 +17,7 @@ for tc in range(1, T + 1):
     # 최소값을 구하기 위해서 설정
     # (total 1을 제외한 모든 숫자가 들어오면 모든배가 들어온것으로 생각)
     total = set()
+    temp = set()
     while days:
         end = days[0]
         interval = abs(start - end)
@@ -32,7 +33,11 @@ for tc in range(1, T + 1):
                 spot.append(check)
                 total.add(check)
             else:
-                cnt += 1
+                # print(total, temp)
+                if temp != total:
+                    cnt += 1
+                temp = total.copy()
+                # cnt += 1
                 days.pop(0)
                 if len(total) == N - 1:
                     break
