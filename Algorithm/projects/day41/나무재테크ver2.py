@@ -6,9 +6,9 @@ dx = [0, 1, 0, -1, -1, 1, 1, -1]
 dy = [1, 0, -1, 0, -1, -1, 1, 1]
 
 def growth():
-    for i in info.keys():
-        x, y = i
-        y_list = info[(x, y)]
+    for i in range(N*N):
+        x, y = adx[i]
+        y_list = info[i]
         temp_list = []
         total = 0
         for year in sorted(y_list):
@@ -17,25 +17,23 @@ def growth():
                 land[x][y] -= year
             else:
                 total += year // 2
-        info[(x, y)] = temp_list
+        info[i] = temp_list
         land[x][y] += total
 
 def breed():
     global N
     # print('breed')
     # print(info)
-    temp = list(info.keys())
-    for i in temp:
-        x, y = i
-        y_list = info[(x, y)]
-        for z in y_list:
+    for i in range(N*N):
+        temp = info[i]
+        x, y = adx[i]
+        for z in temp:
             if z % 5 == 0:
                 for k in range(8):
                     nx, ny = x + dx[k], y + dy[k]
                     if 0 <= nx < N and 0 <= ny < N:
-                        if info.get((nx, ny)) == None:
-                            info[(nx, ny)] = []
-                        info[(nx, ny)].append(1)
+                        n = idx[nx][ny]
+                        info[n].append(1)
 
 def give():
     global food
@@ -45,11 +43,21 @@ def give():
 
 N, M, K = map(int, input().split())
 food = [list(map(int, input().split())) for _ in range(N)]
-info = {}
+idx = [[0]*N for _ in range(N)]
+adx = [0] * (N*N)
+n = 0
+for i in range(N):
+    for j in range(N):
+        idx[i][j] = n
+        adx[n] = [i, j]
+        n += 1
+info = []
+for _ in range(N*N):
+    info += [[]].copy()
 land = [[5] * N for _ in range(N)]
 for _ in range(M):
     x, y, z = (map(int, input().split()))
-    info[(x-1, y-1)] = [z]
+    info[idx[x-1][y-1]].append(z)
 
 yer = 0
 # print(info)
@@ -68,7 +76,7 @@ while yer < K:
     yer += 1
 # print(yer, info)
 total = 0
-print(info)
-for val in info.values():
-    total += len(val)
+# print(info)
+for i in info:
+    total += len(i)
 print(total)
