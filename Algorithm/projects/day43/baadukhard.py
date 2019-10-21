@@ -21,28 +21,35 @@ def f(x, y):
                     visited[ni][nj] = 1
                     s.append([ni, nj])
                     temp.append([ni, nj])
-                elif board[ni][nj] == 0 and total < 2:
-                    visited[ni][nj] = 1
-                    s.append([ni, nj])
-                    total += 1
+                # elif board[ni][nj] == 0 and total < 2:
+                #     visited[ni][nj] = 1
+                #     s.append([ni, nj])
+                #     total += 1
     return temp
 
 
 def check(g):
     # print(g)
-    global cnt
-    temp = cnt
+    global maxV
+    cnt = 0
+    temp = set()
     for i in g:
         x, y = i
         for k in range(4):
             nx, ny = x + dx[k], y + dy[k]
             if 0 <= nx < N and 0 <= ny < M:
                 if cnt > 2:
-                    cnt = temp
                     return False
                 elif board[nx][ny] == 0 and visited[nx][ny] == 0:
                     visited[nx][ny] = 1
+                    temp.add((nx, ny))
                     cnt += 1
+    if cnt == 1:
+        one.append(len(g))
+    elif cnt == 2:
+        two.append([temp, len(g)])
+    else:
+        maxV += len(g)
     return True
 
 
@@ -60,10 +67,24 @@ for i in range(N):
 maxV = 0
 # print(group)
 visited = [[0] * M for _ in range(N)]
-group = sorted(group, key=lambda x:len(x), reverse=True)
-cnt = 0
+# group = sorted(group, key=lambda x:len(x), reverse=True)
+one = []
+two = []
 for i in range(len(group)):
-    if check(group[i]):
-        # print("통과")
-        maxV += len(group[i])
-print(maxV)
+    check(group[i])
+one.sort(reverse=True)
+if len(one) > 1:
+    a = sum(one[0:1])
+else:
+    a = sum(one)
+b = 0
+for i in range(len(two)):
+    temp = two[i][1]
+    for j in range(i+1, len(two)):
+        if two[i][0] == two[j][0]:
+            temp += two[j][1]
+        if b < temp:
+            b = temp
+    if b<temp:
+        b = temp
+print(max(a, b) + maxV)
