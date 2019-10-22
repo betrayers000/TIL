@@ -1,3 +1,6 @@
+import sys
+
+sys.stdin = open('baduk.txt', 'r')
 
 dxy = [[0, 1], [0, -1], [1, 0], [-1, 0]]
 N, M = map(int, input().split())
@@ -28,9 +31,11 @@ for i in range(N):
                 group_info.pop()
             group += 1
 result = 0
+print(group_info)
 n = len(group_info)
 deq.append((0, [False for _ in range(len(group_info))], set({})))
 while len(deq):
+    print(deq)
     k, pick, sum_blank = deq.pop()
     if k == n:
         cnt = 0
