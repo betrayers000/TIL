@@ -649,3 +649,25 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/c++,visualstudio
+
+
+# Created by https://www.gitignore.io/api/vue
+# Edit at https://www.gitignore.io/?templates=vue
+
+### Vue ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_componets
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+# End of https://www.gitignore.io/api/vue
